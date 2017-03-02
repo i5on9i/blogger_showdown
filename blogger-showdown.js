@@ -23,12 +23,13 @@ MarkdownInBlogger.convertMD = function () {
 
     var rawtext = el.innerText;
     var md_html = converter.makeHtml(rawtext);
-    var md = $(md_html); //.css('border','3px solid blue');
-    md.insertBefore(el);
+    var mdDiv = document.createElement('div');
+    mdDiv.innerHTML = md_html;
+    el.parentElement.insertBefore(mdDiv, el)
     el.hidden = true;
     // Array.prototype.forEach.call(els, function(el, i){
     // });
-    
+
     // $('pre.markdown').each(function (i, block) {
     //   //var rawtext = MarkdownInBlogger.unescapeHTML(block.innerText);
     //   var rawtext = block.innerText;
